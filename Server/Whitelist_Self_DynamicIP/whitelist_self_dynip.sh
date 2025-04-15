@@ -46,7 +46,7 @@ sudo systemctl reload apache2
 # FAIL2BAN ###########################################################################################################
 
 echo " ... Searching for pre-existing configuration in Fail2Ban..."
-if grep -q "^ignoreip = 127.0.0.0/8 ::1 192.168.1.0/24 0.0.0.0 100.84.169.70.*" "$FAIL2BAN_IGNOREIP"; then
+if grep -q "^ignoreip = 127.0.0.0/8 ::1 192.168.1.0/24 0.0.0.0.*" "$FAIL2BAN_IGNOREIP"; then
     sed -i "s|^ignoreip = 127.0.0.0/8 ::1 192.168.1.0/24 0.0.0.0.*|ignoreip = 127.0.0.0/8 ::1 192.168.1.0/24 0.0.0.0 $CURRENT_IP|" "$FAIL2BAN_IGNOREIP"
     echo " (2) Tried updating ignoreip to contain: \"$CURRENT_IP\" in $FAIL2BAN_IGNOREIP"
 else
